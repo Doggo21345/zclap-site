@@ -79,6 +79,9 @@ a:hover .arrow,button:hover .arrow{transform:translateX(3px)}
 .svc{border-top:1px solid var(--ink)}
 .svc-row{display:grid;grid-template-columns:1.05fr 1.6fr .85fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--rule);align-items:baseline}
 .svc-row h3{margin:0;font-size:1.25rem}
+.svc-row h3 a{text-decoration:none;color:var(--ink)}
+.svc-row h3 a:after{content:" →";color:var(--orange);font-family:var(--sans);font-size:.9em}
+.svc-row h3 a:hover{color:var(--orange-d)}
 .svc-row p{margin:0}
 .svc-row .how{font-size:.9rem;color:var(--mute)}
 .svc-row .how a{font-weight:600;color:var(--ink);display:inline-block;margin-top:6px}
