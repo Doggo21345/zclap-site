@@ -111,6 +111,13 @@ def faq_jsonld(body):
               "acceptedAnswer": {"@type": "Answer", "text": " ".join(strip(a))}} for q, a in qs]
     return '<script type="application/ld+json" data-faq>' + json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": items}) + "</script>"
 
+PROOF = """<div class="hero-proof">
+        <div><b>150+</b>MDM projects delivered across our team</div>
+        <div><b>85%</b>of our consultants hold an Informatica certification</div>
+        <div><b>72 hrs</b>from your answers to a written estimate</div>
+      </div>"""
+PREVIEW = """<figure class="ws-prev offer-img" style="margin:30px 0 0"><img src="../assets/fig-worksheet.png" alt="Preview of the hub inventory worksheet: components, counts, customization, MDM SaaS equivalent and approach" width="560" height="280"><figcaption class="doc-cap" style="text-align:left">Included: the hub inventory worksheet (Excel, example values shown), with data checks, parity tests and a cutover checklist.</figcaption></figure>"""
+
 def page(meta, body):
     slug = meta["slug"]; url = f"{SITE}/{slug}/"
     crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -127,11 +134,7 @@ def page(meta, body):
       <span class="kicker">{meta["kicker"]}</span>
       <h1>{meta["h1"]}</h1>
       <p class="big">{meta["lead"]}</p>
-      <div class="hero-proof">
-        <div><b>150+</b>MDM projects delivered across our team</div>
-        <div><b>85%</b>of our consultants hold an Informatica certification</div>
-        <div><b>72 hrs</b>from your answers to a written estimate</div>
-      </div>
+      {PREVIEW if meta.get("aside") == "download" else PROOF}
     </div>
     {DOWNLOAD.replace("{slug}", slug) if meta.get("aside") == "download" else STARTER}
   </div>
