@@ -24,8 +24,7 @@
 <!-- Google tag: same IDs as the current site, so analytics and ads conversions carry over -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QG1B2QHK2T"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QG1B2QHK2T');gtag('config','AW-18483009453');</script>
-<!-- Microsoft Clarity (free heatmaps + session recordings): create a project at clarity.microsoft.com,
-     then paste its snippet here. Left out until there's a project ID. -->
+<!-- Microsoft Clarity: set CLARITY_ID in site.js. -->
 <script type="application/ld+json" data-faq>{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How can you fix a price for MDM?", "acceptedAnswer": {"@type": "Answer", "text": "We scope around one or two specific use cases, so the project comes down to a short list of known inputs: entities, sources, consuming systems, hierarchies and volumes. If yours needs discovery first, or has a technical risk unique to your environment, we'll say so and shape the work around it."}}, {"@type": "Question", "name": "Isn't MDM slow and expensive?", "acceptedAnswer": {"@type": "Answer", "text": "It used to be, mostly because of on-prem servers and multi-year builds. Informatica MDM SaaS takes most of that away. The quickest way to find out what yours would take is the questionnaire."}}, {"@type": "Question", "name": "We run Informatica MDM on-prem. Can you move it without breaking anything?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We plan for your existing golden records and prove parity before cutover, so what the hub delivers today keeps working."}}, {"@type": "Question", "name": "We use a different MDM. Can you replace it?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Replacements have more moving parts, so we scope them on a call. A national health insurer we worked with left its previous MDM ahead of a hard renewal deadline."}}, {"@type": "Question", "name": "What happens after I fill in the questionnaire?", "acceptedAnswer": {"@type": "Answer", "text": "Someone on our team reads it. Within 72 hours you get a PDF with a cost range, a timeline and a complexity rating. If it looks right, we book a 45-minute call; if not, that's the end of it."}}]}</script>
 </head>
 <body>
@@ -233,7 +232,7 @@
       <p>Or use the <a href="#start">5-minute questionnaire</a> for a written estimate.</p>
       <p class="mute">Email us directly at <a href="mailto:info@zclap.com">info@zclap.com</a></p>
     </div>
-    <form id="contact-form" data-web3 action="https://api.web3forms.com/submit" method="POST">
+    <form data-clarity-mask="true" id="contact-form" data-web3 action="https://api.web3forms.com/submit" method="POST">
       <div class="ok"><h3>Thanks, it's with our team.</h3><p>An MDM consultant will be in touch shortly.</p></div>
       <div class="fields">
         <input type="hidden" name="access_key" value="fde866e1-2dad-4c62-838c-498b62151c5c">
@@ -264,7 +263,7 @@
 <footer>
   <div class="wrap">
     <img src="assets/logo-dark.png" alt="ZCLAP" width="107" height="24">
-    <span>© 2026 ZCLAP</span>
+    <span>© 2026 ZCLAP · We use analytics and session recording to improve this site; form entries are never recorded.</span>
     <span class="flinks"><a href="informatica-mdm-implementation/">Implementation</a><a href="informatica-mdm-saas-migration/">SaaS migration</a><a href="informatica-mdm-cost/">Cost</a><a href="informatica-mdm-replacement/">Replacing another MDM</a><a href="healthcare/">Healthcare</a><a href="https://zclap.com/estimator/">MDM estimator</a><a href="mailto:info@zclap.com">info@zclap.com</a><a href="https://www.linkedin.com/company/zclap-inc/" rel="noopener">LinkedIn</a></span>
   </div>
 </footer>

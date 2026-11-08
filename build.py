@@ -37,7 +37,7 @@ STARTER = f"""<div class="starter" id="start">
 DOWNLOAD = """<div class="starter" id="get">
       <div class="step"><span>Free download</span><span>PDF + Excel worksheet</span></div>
       <h2>Get the playbook and the hub inventory worksheet</h2>
-      <form class="lead-form" data-web3 data-event="lead_magnet_download" action="https://api.web3forms.com/submit" method="POST">
+      <form data-clarity-mask="true" class="lead-form" data-web3 data-event="lead_magnet_download" action="https://api.web3forms.com/submit" method="POST">
         <div class="ok">
           <h3 style="font-size:1.15rem">Here you go.</h3>
           <a class="choice" href="../downloads/mdm-hub-to-saas-worksheet.xlsx" download data-track="download_worksheet"><span>Hub inventory worksheet (Excel)</span><span class="arrow">↓</span></a>
@@ -76,7 +76,7 @@ CONTACT = """<section class="sec tint contact" id="contact">
       <p>Or use the <a href="#start">5-minute questionnaire</a> for a written estimate.</p>
       <p class="mute">Email us directly at <a href="mailto:info@zclap.com">info@zclap.com</a></p>
     </div>
-    <form id="contact-form" data-web3 action="https://api.web3forms.com/submit" method="POST">
+    <form data-clarity-mask="true" id="contact-form" data-web3 action="https://api.web3forms.com/submit" method="POST">
       <div class="ok"><h3>Thanks, it's with our team.</h3><p>An MDM consultant will be in touch shortly.</p></div>
       <div class="fields">
         <input type="hidden" name="access_key" value="fde866e1-2dad-4c62-838c-498b62151c5c">
@@ -195,7 +195,7 @@ def footer(root):
     return f"""<footer>
   <div class="wrap">
     <img src="{root}assets/logo-dark.png" alt="ZCLAP" width="107" height="24">
-    <span>© 2026 ZCLAP</span>
+    <span>© 2026 ZCLAP · We use analytics and session recording to improve this site; form entries are never recorded.</span>
     <span class="flinks">{links}<a href="https://zclap.com/estimator/">MDM estimator</a><a href="mailto:info@zclap.com">info@zclap.com</a><a href="https://www.linkedin.com/company/zclap-inc/" rel="noopener">LinkedIn</a></span>
   </div>
 </footer>"""

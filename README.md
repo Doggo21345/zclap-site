@@ -15,4 +15,4 @@ Before going live on zclap.com:
 3. Team: real photos, names, titles, bios. Confirm the founder bio.
 4. Confirm the client logos may be shown.
 5. Fill in the `TO CONFIRM` comments in `pages/` (MDM 10.4 support dates, cost ranges) and have Manas review the topic pages.
-6. Add Microsoft Clarity (see the comment in `index.html`).
+6. Microsoft Clarity: paste the project ID into CLARITY_ID at the top of `site.js`, then rerun ./build-production.sh.
