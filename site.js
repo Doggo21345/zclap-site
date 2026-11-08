@@ -18,7 +18,7 @@
       entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
       bar.style.display = Object.keys(visible).some(function (k) { return visible[k]; }) ? "none" : "";
     });
-    ["start", "contact"].forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+    ["start", "get", "contact"].forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
   }
 
   function track(name, params) { if (window.gtag) window.gtag("event", name, params || {}); }
@@ -41,8 +41,7 @@
     el.addEventListener("click", function () { track(el.getAttribute("data-track"), { page: location.pathname }); });
   });
 
-  var form = document.getElementById("contact-form");
-  if (form) {
+  document.querySelectorAll("form[data-web3]").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var b = form.querySelector("button[type=submit]");
@@ -54,12 +53,12 @@
           if (!d.success) throw new Error("not sent");
           form.querySelector(".fields").style.display = "none";
           form.querySelector(".ok").style.display = "block";
-          track("generate_lead", { form: "contact", page: location.pathname });
+          track(form.getAttribute("data-event") || "generate_lead", { form: form.id || "lead", page: location.pathname });
         })
         .catch(function () {
           b.disabled = false; b.innerHTML = label;
           alert("That didn't go through. Please email info@zclap.com and we'll pick it up.");
         });
     });
-  }
+  });
 })();

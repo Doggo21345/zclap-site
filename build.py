@@ -21,6 +21,7 @@ TOPICS = [
     ("informatica-mdm-cost", "Cost"),
     ("informatica-mdm-replacement", "Replacing another MDM"),
     ("healthcare", "Healthcare"),
+    ("mdm-saas-migration-playbook", "Free migration playbook"),
 ]
 
 STARTER = f"""<div class="starter" id="start">
@@ -33,6 +34,40 @@ STARTER = f"""<div class="starter" id="start">
       <p class="fine">Takes about five minutes. A person on our team reviews every answer. You're not signing up for anything.</p>
     </div>"""
 
+DOWNLOAD = """<div class="starter" id="get">
+      <div class="step"><span>Free download</span><span>PDF + Excel worksheet</span></div>
+      <h2>Get the playbook and the hub inventory worksheet</h2>
+      <form class="lead-form" data-web3 data-event="lead_magnet_download" action="https://api.web3forms.com/submit" method="POST">
+        <div class="ok">
+          <h3 style="font-size:1.15rem">Here you go.</h3>
+          <a class="choice" href="../downloads/mdm-hub-to-saas-worksheet.xlsx" download data-track="download_worksheet"><span>Hub inventory worksheet (Excel)</span><span class="arrow">↓</span></a>
+          <a class="choice" href="../downloads/mdm-saas-migration-playbook.pdf" download data-track="download_pdf"><span>The playbook (PDF)</span><span class="arrow">↓</span></a>
+          <p class="fine">Questions while you work through it? Email info@zclap.com and an MDM consultant will answer.</p>
+        </div>
+        <div class="fields">
+          <input type="hidden" name="access_key" value="fde866e1-2dad-4c62-838c-498b62151c5c">
+          <input type="hidden" name="subject" value="Lead magnet download: {slug}">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <label for="d-email">Work email</label><input id="d-email" name="email" type="email" required autocomplete="email">
+          <div class="pair">
+            <div><label for="d-name">Name</label><input id="d-name" name="name" required autocomplete="name"></div>
+            <div><label for="d-company">Company</label><input id="d-company" name="company" required autocomplete="organization"></div>
+          </div>
+          <label for="d-role">Your role</label>
+          <select id="d-role" name="role">
+            <option>MDM owner or data architect</option>
+            <option>Data or analytics leader</option>
+            <option>IT or platform leader</option>
+            <option>Data steward or developer</option>
+            <option>Other</option>
+          </select>
+          <label for="d-version">Hub version (optional)</label><input id="d-version" name="hub_version" placeholder="e.g. 10.4 HF2">
+          <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Send me the playbook <span class="arrow">→</span></button>
+          <p class="fine">Free. No sales call unless you ask for one.</p>
+        </div>
+      </form>
+    </div>"""
+
 CONTACT = """<section class="sec tint contact" id="contact">
   <div class="wrap">
     <div>
@@ -41,7 +76,7 @@ CONTACT = """<section class="sec tint contact" id="contact">
       <p>Or use the <a href="#start">5-minute questionnaire</a> for a written estimate.</p>
       <p class="mute">Email us directly at <a href="mailto:info@zclap.com">info@zclap.com</a></p>
     </div>
-    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <form id="contact-form" data-web3 action="https://api.web3forms.com/submit" method="POST">
       <div class="ok"><h3>Thanks, it's with our team.</h3><p>An MDM consultant will be in touch shortly.</p></div>
       <div class="fields">
         <input type="hidden" name="access_key" value="fde866e1-2dad-4c62-838c-498b62151c5c">
@@ -98,7 +133,7 @@ def page(meta, body):
         <div><b>72 hrs</b>from your answers to a written estimate</div>
       </div>
     </div>
-    {STARTER}
+    {DOWNLOAD.replace("{slug}", slug) if meta.get("aside") == "download" else STARTER}
   </div>
 </section>"""
     return f"""<!DOCTYPE html>
@@ -135,7 +170,7 @@ def page(meta, body):
       <a href="../#work">Work</a>
       <a href="#faq">FAQ</a>
       <a href="../">Home</a>
-      <a class="btn btn-primary" href="#start" data-track="nav_estimate">Get an estimate</a>
+      <a class="btn btn-primary" href="{'#get' if meta.get('aside') == 'download' else '#start'}" data-track="nav_estimate">{'Get the playbook' if meta.get('aside') == 'download' else 'Get an estimate'}</a>
     </nav>
   </div>
 </header>
@@ -146,7 +181,7 @@ def page(meta, body):
 {CONTACT.replace("{slug}", slug)}
 </main>
 {footer("../")}
-<div class="mbar"><a class="btn btn-primary" href="#start" data-track="mobile_bar">Get a free MDM estimate <span class="arrow">→</span></a></div>
+{'<div class="mbar"><a class="btn btn-primary" href="#get" data-track="mobile_bar">Get the free playbook <span class="arrow">→</span></a></div>' if meta.get("aside") == "download" else '<div class="mbar"><a class="btn btn-primary" href="#start" data-track="mobile_bar">Get a free MDM estimate <span class="arrow">→</span></a></div>'}
 <script src="../site.js" defer></script>
 </body>
 </html>

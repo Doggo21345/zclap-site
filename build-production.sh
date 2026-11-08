@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "$0")"
 rm -rf dist zclap-site-production.zip
 mkdir -p dist
-cp -R index.html healthcare informatica-mdm-* styles.css site.js assets sitemap.xml robots.txt dist/
+cp -R index.html healthcare informatica-mdm-* mdm-saas-migration-playbook downloads styles.css site.js assets sitemap.xml robots.txt dist/
 find dist -name '*.html' -exec sed -i.bak \
   -e '/<meta name="robots" content="noindex">/d' \
   -e 's#https://zclap.com/estimator/#/estimator/#g' {} \;

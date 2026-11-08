@@ -197,3 +197,26 @@ footer a{color:var(--body);text-decoration:none;margin-left:22px}
   .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(251,249,245,.97);border-top:1px solid var(--rule)}
   .mbar .btn{flex:1;justify-content:center}
 }
+
+/* guide checklists */
+.check-list{list-style:none;padding:0;margin:0 0 1.2rem}
+.check-list li{position:relative;padding:8px 0 8px 30px;border-bottom:1px solid var(--rule)}
+.check-list li:before{content:"";position:absolute;left:2px;top:15px;width:14px;height:14px;border:1.5px solid var(--ink);border-radius:3px}
+sup a{text-decoration:none;color:var(--orange-d);font-weight:600}
+.starter form{background:none;border:0;padding:0}
+
+/* print / PDF: the guide only */
+@media print{
+  @page{margin:16mm 14mm}
+  body{background:#fff;font-size:10.5pt;padding:0}
+  .top,.mbar,.topics,.starter,#contact,footer,.hero-proof,.crumbs{display:none!important}
+  .hero{padding:0 0 10pt}.hero .wrap{display:block}
+  .sec{padding:14pt 0;break-inside:auto}.sec.tint{background:#fff}
+  .split{display:block}.split > .label{position:static}
+  h1{font-size:24pt}h2{font-size:15pt;break-after:avoid}h3{font-size:11pt}
+  .svc-row{grid-template-columns:1.1fr 2fr .8fr;padding:8pt 0;break-inside:avoid}
+  details{break-inside:avoid}details > p{display:block}
+  a{color:var(--ink)}
+  .print-only{display:block!important}
+}
+.print-only{display:none}

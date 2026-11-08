@@ -1,0 +1,147 @@
+<!--meta
+{"slug": "mdm-saas-migration-playbook",
+ "crumb": "MDM Hub to SaaS migration playbook",
+ "title": "Informatica MDM Hub to SaaS Migration Playbook (Free)",
+ "description": "A step-by-step playbook for moving Informatica Multidomain MDM on-prem to MDM SaaS: approach per component, data checks, load order, parity tests and cutover. Free worksheet.",
+ "kicker": "Free guide · 15-minute read",
+ "h1": "The Informatica MDM Hub to SaaS migration playbook.",
+ "lead": "Everything we check when we move an on-prem Multidomain MDM hub to Informatica MDM SaaS, in the order we check it. Read it here, or download the PDF and the inventory worksheet to work through with your team.",
+ "aside": "download"}
+-->
+<section class="sec">
+  <div class="wrap split">
+    <div class="label"><h2>Who this is for</h2></div>
+    <div class="prose">
+      <p>MDM owners, data architects and program leads running the on-prem Informatica MDM Hub (Multidomain MDM, often 10.4 or 10.5) who need to decide whether and how to move to MDM SaaS, and want to know what the work really involves before they budget for it.</p>
+      <p>It follows the approach Informatica's own support engineers describe for modernization<sup><a href="#sources">1</a></sup>, plus what we've learned delivering MDM projects. Where Informatica's guidance applies to specific versions or may change, we say so.</p>
+      <p><b>In this playbook:</b> <a href="#decide">1. Decide</a> · <a href="#approach">2. Pick an approach per component</a> · <a href="#inventory">3. Inventory the hub</a> · <a href="#data">4. Prepare the data</a> · <a href="#parity">5. Prove parity</a> · <a href="#cutover">6. Cut over</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec tint" id="decide">
+  <div class="wrap split">
+    <div class="label"><h2>1. Decide what you're moving to</h2></div>
+    <div class="prose">
+      <p>You have three options: stay on-prem for now, move to Informatica MDM SaaS, or switch to another MDM. Two questions settle most cases.</p>
+      <p><b>When does your version's support end?</b> Check Informatica's Product Lifecycle Guide for your exact version and patch level. A support date is the most common reason a migration becomes urgent.</p>
+      <p><b>What would you have to rebuild?</b> Moving to MDM SaaS keeps your data model, much of your match and survivorship logic, and your team's Informatica skills. Switching platforms rebuilds all of it. If you're being pitched to switch, price both paths side by side; our <a href="../informatica-mdm-replacement/">comparison page</a> lists what to weigh.</p>
+      <p><b>Tip:</b> ask your Informatica account team for the modernization <b>Analysis Report</b>. Informatica says it will evaluate your on-prem change list against SaaS capabilities, and the report is useful input for design<sup><a href="#sources">1</a></sup>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="approach">
+  <div class="wrap">
+    <div class="split" style="margin-bottom:28px">
+      <div class="label"><h2>2. Pick an approach per component</h2></div>
+      <div class="prose">
+        <p>Informatica describes three approaches<sup><a href="#sources">1</a></sup>, and most migrations mix all three:</p>
+        <p><b>Lift-and-shift:</b> mapped one-to-one to MDM SaaS. <b>Refactor:</b> the same business behavior, rebuilt with SaaS features and best practices. <b>Redesign:</b> rebuilt from scratch for SaaS.</p>
+        <p>Here is where the main hub components land, based on Informatica's mapping<sup><a href="#sources">1</a></sup>. The full list of 26 components is in the worksheet.</p>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-row"><h3>Base objects, lookups, hierarchies, relationships</h3><p>Business entities, Reference 360 code lists, and hierarchy and relationship models in the Business 360 application.</p><div class="how">Lift-and-shift, refactor</div></div>
+      <div class="svc-row"><h3>Match rules, trust and survivorship</h3><p>Configured on the business entity. Your tuned rules encode business decisions: carry the decisions, then test on real duplicates.</p><div class="how">Refactor, redesign</div></div>
+      <div class="svc-row"><h3>Validation rules, IDQ rules, cleanse functions</h3><p>Basic data quality rules on the business entity; advanced rules in Cloud Data Quality.</p><div class="how">Refactor, redesign</div></div>
+      <div class="svc-row"><h3>Address, email and phone validation</h3><p>DaaS services for address, email and phone; other enrichment providers through Cloud Application Integration.</p><div class="how">Mostly lift-and-shift</div></div>
+      <div class="svc-row"><h3>Hub and IDD user exits, external calls</h3><p>Rebuilt with Cloud Data Quality, Cloud Application Integration and Cloud Data Integration. Usually the biggest single effort driver.</p><div class="how">Redesign</div></div>
+      <div class="svc-row"><h3>Workflows (Siperian, ActiveVOS)</h3><p>Standard one- and two-step approvals come out of the box; custom workflows become Application Integration processes with human tasks.</p><div class="how">Refactor; custom = redesign</div></div>
+      <div class="svc-row"><h3>SIF and BES integrations, JMS queues</h3><p>Business Entity Services REST APIs; outbound queues become published business events, with streaming ingestion for real time.</p><div class="how">Refactor, redesign</div></div>
+      <div class="svc-row"><h3>Batch jobs and orchestration</h3><p>Stage and load jobs become Cloud Data Integration taskflows; match, merge and index jobs become Business 360 Console job definitions; batch groups become REST calls.</p><div class="how">Refactor, redesign</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec tint" id="inventory">
+  <div class="wrap split">
+    <div class="label"><h2>3. Inventory the hub</h2></div>
+    <div class="prose">
+      <p>Count what you have before anyone estimates anything. The effort depends far more on <b>how much is customized</b> than on how many records you hold.</p>
+      <ul class="check-list">
+        <li>Base objects, lookups, hierarchies and relationship types</li>
+        <li>Match rule sets and how heavily they've been tuned</li>
+        <li>Validation rules, cleanse functions and IDQ mapplets</li>
+        <li>Hub and Data Director user exits, and external calls</li>
+        <li>Workflows, especially custom ActiveVOS processes</li>
+        <li>Every system that writes to the hub, and every system that reads from it (and which of those are real time)</li>
+        <li>Batch groups and whatever schedules them</li>
+      </ul>
+      <p>The <a href="#get">worksheet</a>'s <b>Hub inventory</b> tab lists each component, where to find it in the hub, and its SaaS equivalent. Fill in the counts and you have the inputs for an estimate.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="data">
+  <div class="wrap split">
+    <div class="label"><h2>4. Prepare the data</h2></div>
+    <div class="prose">
+      <p><b>Run consistency checks first.</b> Informatica lists two prerequisites<sup><a href="#sources">1</a></sup>: base object records with no matching cross-reference row, and orphan child records whose parent is gone. Both break loads. The worksheet includes example SQL for each.</p>
+      <p><b>Finish the SaaS model before loading.</b> The business entity model, including a logical attribute for every field you'll map, has to be complete before data moves.</p>
+      <p><b>Plan Business IDs.</b> In MDM SaaS, an incoming record with an existing Business ID merges into that record and skips matching; a new Business ID creates a new record<sup><a href="#sources">1</a></sup>. Decide how IDs are generated and what your downstream systems will key on.</p>
+      <p><b>Decide where history goes.</b> As of February 2025, Informatica said history data can't currently be migrated to MDM SaaS and recommended keeping it in a data lake<sup><a href="#sources">1</a></sup>. Find out who uses history today before you archive it.</p>
+      <p><b>Load in the right order.</b> Code lists into Reference 360 first. Then extract from the on-prem cross-reference (XREF) tables and load root entities, then children, then grandchildren. Within each source system, load the winning records first, then the remaining active cross-references<sup><a href="#sources">1</a></sup>.</p>
+      <p><b>Decide on enrichment during the load.</b> With DaaS enrichment on, phone, address and email values change as they load; with it off, you get a straight copy. Pick one deliberately, because it affects parity testing.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec tint" id="parity">
+  <div class="wrap split">
+    <div class="label"><h2>5. Prove parity</h2></div>
+    <div class="prose">
+      <p>Agree with the business what "the same result" means before the build starts, then measure it. For a national health insurer moving between MDM platforms, we seeded golden records so they matched exactly at cutover, so parity was shown rather than assumed.</p>
+      <ul class="check-list">
+        <li>Golden record counts per entity and record type</li>
+        <li>Cross-reference counts per source system</li>
+        <li>Match outcomes on a sample of known duplicates and known non-duplicates</li>
+        <li>Surviving values for key attributes on a sample of records</li>
+        <li>Hierarchy and relationship counts</li>
+        <li>What each consuming system receives for the same inputs</li>
+        <li>Batch run times and API response times</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="cutover">
+  <div class="wrap split">
+    <div class="label"><h2>6. Cut over</h2></div>
+    <div class="prose">
+      <ul class="check-list">
+        <li>Freeze configuration changes on the on-prem hub</li>
+        <li>Run a final delta load and rerun the parity tests</li>
+        <li>Switch consuming systems one at a time, then the sources</li>
+        <li>Keep a tested rollback plan</li>
+        <li>Train stewards on the new pages and tasks</li>
+        <li>Keep the old hub read-only for an agreed period, then retire it and archive history</li>
+      </ul>
+      <p class="pull">"A migration is the cheapest moment you'll ever have to retire the objects and rules nobody uses."</p>
+      <p>Want a cost and timeline for your hub? Fill in the worksheet's inventory and send it to us, or take the <a href="https://zclap.com/estimator/index.html">5-minute questionnaire</a>. We'll reply with a fixed-price estimate within 72 hours.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec tint" id="faq">
+  <div class="wrap split">
+    <div class="label"><h2>Common questions</h2></div>
+    <div>
+      <details><summary>Can we migrate MDM history tables to MDM SaaS?</summary><p>As of Informatica's February 2025 guidance, history data can't currently be migrated, and Informatica recommends storing it in a data lake. Check with Informatica for your release.</p></details>
+      <details><summary>Do our match rules carry over automatically?</summary><p>No. Match and survivorship are configured again on the business entity, which Informatica classes as refactor or redesign. Keep the business decisions behind your rules and test them on real duplicates.</p></details>
+      <details><summary>What usually takes the longest?</summary><p>Custom code: hub and Data Director user exits, external calls and custom workflows. They are redesigned on SaaS, so count them early.</p></details>
+      <details><summary>Does Informatica help with the assessment?</summary><p>Informatica says it provides an Analysis Report that evaluates your on-prem change list against SaaS capabilities. Ask your account team to start it.</p></details>
+      <details><summary>How long does a migration take?</summary><p>It depends on the number of domains, the amount of custom code and the systems connected to the hub. Send us the completed worksheet or take the questionnaire, and we'll give you a timeline in weeks.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="sources">
+  <div class="wrap split">
+    <div class="label"><h2>Sources</h2></div>
+    <div class="prose">
+      <p class="src">1. Informatica Global Customer Support, "MDM Modernization: Transitioning from On-Premises to SaaS", Tech Tuesdays webinar slides, 18 February 2025. <a href="https://success.informatica.com/content/dam/informatica-cxp/techtuesdays-slides-pdf/MDM%20Modernization%20-%20Transitioning%20from%20On-Premises%20to%20SaaS.pdf" rel="noopener">success.informatica.com</a>. Informatica notes its statements are informational and subject to change.</p>
+      <p class="src">Informatica, Multidomain MDM, and MDM SaaS are trademarks of Informatica. ZCLAP is an independent consultancy.</p>
+    </div>
+  </div>
+</section>
