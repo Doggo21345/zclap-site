@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informatica MDM Implementation: Steps & Best Practices</title>
+<meta name="description" content="How an Informatica MDM implementation runs: use case, model and match design, MDM SaaS build, go-live and integration. Fixed-price estimate in 72 hours.">
+<meta name="robots" content="noindex"><!-- preview only: remove when this goes live on zclap.com -->
+<link rel="canonical" href="https://zclap.com/informatica-mdm-implementation/">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://zclap.com/informatica-mdm-implementation/">
+<meta property="og:title" content="Informatica MDM Implementation: Steps &amp; Best Practices">
+<meta property="og:description" content="How an Informatica MDM implementation runs: use case, model and match design, MDM SaaS build, go-live and integration. Fixed-price estimate in 72 hours.">
+<meta property="og:image" content="https://zclap.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Informatica MDM implementation", "serviceType": "Informatica MDM consulting", "provider": {"@type": "ProfessionalService", "name": "ZCLAP", "url": "https://zclap.com/"}, "areaServed": "US", "url": "https://zclap.com/informatica-mdm-implementation/", "description": "How an Informatica MDM implementation runs: use case, model and match design, MDM SaaS build, go-live and integration. Fixed-price estimate in 72 hours."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ZCLAP", "item": "https://zclap.com/"}, {"@type": "ListItem", "position": 2, "name": "Informatica MDM implementation", "item": "https://zclap.com/informatica-mdm-implementation/"}]}</script>
+<script type="application/ld+json" data-faq>{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How long does an Informatica MDM implementation take?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the number of entities, sources, hierarchies and consuming systems. Answer the questionnaire and your estimate gives you a timeline in weeks for your scope."}}, {"@type": "Question", "name": "Should we implement on SaaS or on-prem?", "acceptedAnswer": {"@type": "Answer", "text": "For new implementations we recommend Informatica MDM SaaS. It removes the servers and scaling work that made MDM slow in the past. Hybrid setups are possible where a system has to stay on-prem."}}, {"@type": "Question", "name": "What do you need from us to start?", "acceptedAnswer": {"@type": "Answer", "text": "An owner for the business outcome, access to the source systems, and data stewards who know the records. The questionnaire covers the rest."}}, {"@type": "Question", "name": "Can you fix the price?", "acceptedAnswer": {"@type": "Answer", "text": "For most new implementations, yes, because we scope around bounded use cases with known inputs. See what drives the cost ."}}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QG1B2QHK2T"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QG1B2QHK2T');gtag('config','AW-18483009453');</script>
+</head>
+<body>
+<!-- Built by build.py from pages/informatica-mdm-implementation.html. Edit that file, not this one. -->
+<header class="top">
+  <div class="wrap">
+    <a href="../" aria-label="ZCLAP home"><img src="../assets/logo-dark.png" alt="ZCLAP" width="142" height="32"></a>
+    <button class="menu" aria-label="Menu" aria-expanded="false" aria-controls="menu">☰</button>
+    <nav id="menu">
+      <a href="../#services">Services</a>
+      <a href="../#work">Work</a>
+      <a href="#faq">FAQ</a>
+      <a href="../">Home</a>
+      <a class="btn btn-primary" href="#start" data-track="nav_estimate">Get an estimate</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="../">ZCLAP</a> / <span>Informatica MDM implementation</span></nav>
+      <span class="kicker">Informatica MDM implementation</span>
+      <h1>An Informatica MDM implementation, step by step.</h1>
+      <p class="big">Most MDM programs that disappoint were scoped around data instead of an outcome. Here is how we run a new Informatica MDM implementation so it pays back, and how we price it before you start.</p>
+      <div class="hero-proof">
+        <div><b>150+</b>MDM projects delivered across our team</div>
+        <div><b>85%</b>of our consultants hold an Informatica certification</div>
+        <div><b>72 hrs</b>from your answers to a written estimate</div>
+      </div>
+    </div>
+    <div class="starter" id="start">
+      <div class="step"><span>Free estimate</span><span>Question 1 of about 12</span></div>
+      <h2>What kind of MDM project is it?</h2>
+      <a class="choice" href="https://zclap.com/estimator/index.html" data-project="new"><span>New Informatica MDM implementation</span><span class="arrow">→</span></a>
+      <a class="choice" href="https://zclap.com/estimator/index.html" data-project="modernize"><span>Moving an on-prem hub to MDM SaaS</span><span class="arrow">→</span></a>
+      <a class="choice" href="#contact" data-project="expand"><span>Adding a domain to a live hub<small>We'll scope this one on a short call</small></span><span class="arrow">→</span></a>
+      <a class="choice" href="#contact" data-project="replace"><span>Replacing another MDM<small>We'll scope this one on a short call</small></span><span class="arrow">→</span></a>
+      <p class="fine">Takes about five minutes. A person on our team reviews every answer. You're not signing up for anything.</p>
+    </div>
+  </div>
+</section>
+<div class="topics"><div class="wrap"><span>Informatica MDM guides:</span> <a href="../informatica-mdm-implementation/" aria-current=page>Implementation</a> <a href="../informatica-mdm-saas-migration/">SaaS migration</a> <a href="../informatica-mdm-cost/">Cost</a> <a href="../informatica-mdm-replacement/">Replacing another MDM</a> <a href="../healthcare/">Healthcare</a></div></div>
+<section class="sec">
+  <div class="wrap split">
+    <div class="label"><h2>The steps</h2></div>
+    <div class="prose">
+      <ol class="steps" style="margin-top:0">
+        <li><b>Pick the use case and scope it</b>One or two bounded business outcomes, such as a single customer view for sales or a trusted supplier list for procurement. We size the entities, sources, consuming systems, hierarchies and volumes behind them.</li>
+        <li><b>Design the model and the matching</b>The entity model, the hierarchies and the match and merge rules, tuned for how your business defines "the same customer", not left on defaults. Data owners sign off before anything is built.</li>
+        <li><b>Build on Informatica MDM SaaS</b>Configure the hub, data quality rules and stewardship, and connect the sources.</li>
+        <li><b>Load, test and go live</b>Load the history, check the golden records with the people who know the data, and go live with a rollback path.</li>
+        <li><b>Put the data to work</b>Push golden records into the systems where decisions happen, such as Salesforce, SAP, Workday or Oracle, in batch or real time. Then scope the next domain.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec tint">
+  <div class="wrap split">
+    <div class="label"><h2>Best practices that matter most</h2></div>
+    <div class="prose">
+      <p><b>Start from a decision, not a dataset.</b> Gartner estimates three in four MDM programs miss their business objectives. Tie the first release to a process someone owns and a measure they care about.</p>
+      <p><b>Keep the first scope small.</b> One domain and a few sources delivered well beats five domains half done. The platform makes every later domain faster and cheaper.</p>
+      <p><b>Own your hierarchy.</b> Build the customer or product hierarchy the business actually uses. For a global B2B distributor we built a four-level customer hierarchy the client owns, synced in real time between Salesforce and Oracle.</p>
+      <p><b>Tune matching with real duplicates.</b> Match rules are business rules. Test them on your own messy records with the people who will steward them.</p>
+      <p><b>Plan for the consumers.</b> MDM pays back only where the golden record shows up. Name the systems that will use it before the build starts.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap split">
+    <div class="label"><h2>Common questions</h2></div>
+    <div>
+      <details><summary>How long does an Informatica MDM implementation take?</summary><p>It depends on the number of entities, sources, hierarchies and consuming systems. Answer the questionnaire and your estimate gives you a timeline in weeks for your scope.</p></details>
+      <details><summary>Should we implement on SaaS or on-prem?</summary><p>For new implementations we recommend Informatica MDM SaaS. It removes the servers and scaling work that made MDM slow in the past. Hybrid setups are possible where a system has to stay on-prem.</p></details>
+      <details><summary>What do you need from us to start?</summary><p>An owner for the business outcome, access to the source systems, and data stewards who know the records. The questionnaire covers the rest.</p></details>
+      <details><summary>Can you fix the price?</summary><p>For most new implementations, yes, because we scope around bounded use cases with known inputs. See <a href="../informatica-mdm-cost/">what drives the cost</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec tint contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Tell us about your project</h2>
+      <p class="big">For domain expansions, replacements and integrations, or anything you'd rather talk through first. An MDM consultant will reply.</p>
+      <p>Or use the <a href="#start">5-minute questionnaire</a> for a written estimate.</p>
+      <p class="mute">Email us directly at <a href="mailto:info@zclap.com">info@zclap.com</a></p>
+    </div>
+    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <div class="ok"><h3>Thanks, it's with our team.</h3><p>An MDM consultant will be in touch shortly.</p></div>
+      <div class="fields">
+        <input type="hidden" name="access_key" value="fde866e1-2dad-4c62-838c-498b62151c5c">
+        <input type="hidden" name="subject" value="New inquiry from zclap.com/informatica-mdm-implementation">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="pair">
+          <div><label for="f-name">Name</label><input id="f-name" name="name" required autocomplete="name"></div>
+          <div><label for="f-email">Work email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+        </div>
+        <label for="f-company">Company</label><input id="f-company" name="company" required autocomplete="organization">
+        <label for="f-type">Project</label>
+        <select id="f-type" name="project_type">
+          <option data-project="new">New Informatica MDM implementation</option>
+          <option data-project="modernize">On-prem to SaaS modernization</option>
+          <option data-project="expand">Adding a domain</option>
+          <option data-project="replace">Replacing another MDM</option>
+          <option data-project="integrate">Integration with Salesforce, SAP, Workday or Oracle</option>
+          <option data-project="other">Something else</option>
+        </select>
+        <label for="f-msg">What are you trying to get done?</label><textarea id="f-msg" name="message" required></textarea>
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Send to an MDM consultant <span class="arrow">→</span></button>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <img src="../assets/logo-dark.png" alt="ZCLAP" width="107" height="24">
+    <span>© 2026 ZCLAP</span>
+    <span class="flinks"><a href="../informatica-mdm-implementation/">Implementation</a><a href="../informatica-mdm-saas-migration/">SaaS migration</a><a href="../informatica-mdm-cost/">Cost</a><a href="../informatica-mdm-replacement/">Replacing another MDM</a><a href="../healthcare/">Healthcare</a><a href="https://zclap.com/estimator/">MDM estimator</a><a href="mailto:info@zclap.com">info@zclap.com</a><a href="https://www.linkedin.com/company/zclap-inc/" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+<div class="mbar"><a class="btn btn-primary" href="#start" data-track="mobile_bar">Get a free MDM estimate <span class="arrow">→</span></a></div>
+<script src="../site.js" defer></script>
+</body>
+</html>

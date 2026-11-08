@@ -1,2 +1,3 @@
 dist/
 zclap-site-production.zip
+__pycache__/

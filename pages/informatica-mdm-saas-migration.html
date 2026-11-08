@@ -1,0 +1,65 @@
+<!--meta
+{
+ "slug": "informatica-mdm-saas-migration",
+ "crumb": "Informatica MDM SaaS migration",
+ "title": "Informatica MDM SaaS Migration: On-Prem Hub to SaaS",
+ "description": "Moving an on-prem Informatica MDM Hub (10.4, 10.5) to MDM SaaS: your options, the steps, what to plan for, and a fixed-price estimate in 72 hours.",
+ "kicker": "Informatica MDM SaaS migration",
+ "h1": "Moving your on-prem MDM Hub to Informatica MDM SaaS.",
+ "lead": "If you run Informatica Multidomain MDM on-prem, the hub is probably working and getting harder to keep current. Here is how a move to MDM SaaS works, what usually goes wrong, and how we price it before you commit."
+}
+-->
+<section class="sec">
+  <div class="wrap split">
+    <div class="label"><h2>Your options</h2></div>
+    <div class="prose">
+      <p>Teams running the on-prem MDM Hub, often on version 10.4 or 10.5, have three realistic choices.</p>
+      <div class="svc" style="margin-top:24px">
+        <div class="svc-row" style="grid-template-columns:1fr 2fr"><h3>Stay on-prem for now</h3><p>Reasonable if your version is still supported and nothing new is planned. Check your support dates in Informatica's Product Lifecycle Guide, and budget for the upgrade you'll need anyway.</p></div>
+        <div class="svc-row" style="grid-template-columns:1fr 2fr"><h3>Move to Informatica MDM SaaS</h3><p>Keeps your data model, match logic and the team's Informatica skills, and removes the servers, patching and scaling work. For most hubs this is the lowest-risk way forward.</p></div>
+        <div class="svc-row" style="grid-template-columns:1fr 2fr"><h3>Switch to another MDM</h3><p>Vendors such as Reltio actively court Informatica hub owners. A switch means rebuilding the model and match rules on a new platform and retraining the team. Price both paths before deciding; see <a href="../informatica-mdm-replacement/">our comparison</a>.</p></div>
+      </div>
+      <!-- TO CONFIRM before publishing a date: Informatica community answers state MDM 10.4.x end of general support 31 Mar 2025 and end of extended support 31 Mar 2026. Check the Product Lifecycle Guide (knowledge.informatica.com DOC-18919), then add the dates here. -->
+    </div>
+  </div>
+</section>
+
+<section class="sec tint">
+  <div class="wrap split">
+    <div class="label"><h2>How a migration runs</h2></div>
+    <div class="prose">
+      <ol class="steps" style="margin-top:0">
+        <li><b>Inventory the hub</b>Base objects, match and merge rules, trust settings, hierarchies, user exits, Data Director (IDD) customizations, ActiveVOS workflows, and every system that reads from or writes to the hub.</li>
+        <li><b>Decide what to keep, change or drop</b>A migration is the cheapest moment to retire unused objects and rules. We map each one to its MDM SaaS equivalent and flag what has to be redesigned, such as custom user exits.</li>
+        <li><b>Rebuild on MDM SaaS</b>Configure the model, data quality rules, match rules and stewardship, and connect the sources.</li>
+        <li><b>Seed golden records and prove parity</b>Load the current golden records so the new hub starts where the old one left off, then compare the two side by side until the results match.</li>
+        <li><b>Cut over and switch consumers</b>Move the systems that use the data, keep a rollback path, and retire the on-prem hub.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap split">
+    <div class="label"><h2>What to plan for</h2></div>
+    <div class="prose">
+      <p><b>Custom code.</b> User exits and heavily customized Data Director screens rarely move as they are. Count them early; they drive more of the effort than record volume does.</p>
+      <p><b>Match behavior.</b> Rules that were tuned over years encode business decisions. Carry the decisions across, not just the settings, and test with real duplicates.</p>
+      <p><b>Downstream systems.</b> Every consumer of the hub needs a cutover plan. Real-time integrations with Salesforce, SAP or Oracle usually need the most care.</p>
+      <p><b>Parity as proof.</b> Agree up front what "the same results" means and measure it. That is how a national health insurer we worked with cut over between MDM platforms with parity demonstrated rather than assumed.</p>
+      <p class="pull">"Moving to MDM SaaS is often the change that lets a hub finally deliver value it couldn't before."</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec tint" id="faq">
+  <div class="wrap split">
+    <div class="label"><h2>Common questions</h2></div>
+    <div>
+      <details><summary>How long does an Informatica MDM SaaS migration take?</summary><p>It depends mostly on the number of domains, the amount of custom code and the systems connected to the hub. Answer the questionnaire and your estimate gives you the timeline in weeks for your hub.</p></details>
+      <details><summary>Can we keep our match rules?</summary><p>The logic, yes. The configuration is rebuilt on MDM SaaS, and we test it against your real duplicates so the outcomes stay the same, or improve where you want them to.</p></details>
+      <details><summary>Do we have to migrate every domain at once?</summary><p>No. Many teams move one domain first, prove it, then follow with the rest. We price each step.</p></details>
+      <details><summary>Can you give a fixed price for a migration?</summary><p>Usually. Modernizations come down to a known inventory of objects, rules, integrations and volumes, which is what the questionnaire collects. If something needs discovery first, we'll tell you.</p></details>
+    </div>
+  </div>
+</section>

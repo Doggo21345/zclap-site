@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://zclap.com/</loc></url>
-  <url><loc>https://zclap.com/healthcare/</loc></url>
-  <url><loc>https://zclap.com/estimator/</loc></url>
+  <url><loc>https://zclap.com/</loc><lastmod>2026-11-08</lastmod></url>
+  <url><loc>https://zclap.com/healthcare/</loc><lastmod>2026-11-08</lastmod></url>
+  <url><loc>https://zclap.com/informatica-mdm-cost/</loc><lastmod>2026-11-08</lastmod></url>
+  <url><loc>https://zclap.com/informatica-mdm-implementation/</loc><lastmod>2026-11-08</lastmod></url>
+  <url><loc>https://zclap.com/informatica-mdm-replacement/</loc><lastmod>2026-11-08</lastmod></url>
+  <url><loc>https://zclap.com/informatica-mdm-saas-migration/</loc><lastmod>2026-11-08</lastmod></url>
+  <url><loc>https://zclap.com/estimator/</loc><lastmod>2026-11-08</lastmod></url>
 </urlset>
