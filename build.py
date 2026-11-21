@@ -9,7 +9,7 @@ The body may use <details><summary>Q</summary><p>A</p></details> for FAQs."""
 import glob, html, json, os, re, datetime
 
 SITE = "https://zclap.com"
-FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap" rel="stylesheet">'
+FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">'
 GTAG = """<script async src="https://www.googletagmanager.com/gtag/js?id=G-QG1B2QHK2T"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QG1B2QHK2T');gtag('config','AW-18483009453');</script>"""
 ESTIMATOR = "https://zclap.com/estimator/index.html"   # build-production.sh points this at /estimator/

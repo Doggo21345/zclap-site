@@ -4,7 +4,7 @@ New zclap.com: plain HTML and CSS, no build step. Preview on GitHub Pages: https
 
 - `index.html`: homepage. `healthcare/index.html`: healthcare landing page (the outreach kit's Industries tab links healthcare prospects here).
 - Topic pages (`informatica-mdm-implementation/`, `-saas-migration/`, `-cost/`, `-replacement/`) are generated: edit `pages/<slug>.html`, then run `python3 build.py`. It also adds FAQ structured data to every page with a FAQ and rewrites `sitemap.xml`.
-- `styles.css`, `site.js`: shared by every page. Fonts: Source Serif 4 + IBM Plex Sans (Google Fonts).
+- `styles.css`, `site.js`: shared by every page. Font: Plus Jakarta Sans (Google Fonts).
 - Tracking: the existing Google tag (GA4 + Ads). Events: `estimator_start` (with `project_type`), `generate_lead`, and CTA clicks named by `data-track`.
 
 New industry page: copy `healthcare/`, change the copy, link it from the Industries section, and put its path in the outreach kit's Industries tab > Landing page.

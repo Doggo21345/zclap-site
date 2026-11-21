@@ -1,8 +1,8 @@
 """Writes the explanatory diagrams to assets/fig-*.svg. Run: python3 tools/figures.py
 Plain SVG, site colors, system fonts (an <img> SVG can't load the page's web fonts)."""
-INK, NAVY, OR, RULE, MUTE, PAPER = "#14202E", "#17324D", "#E4622A", "#E2DCD1", "#69717C", "#FBF9F5"
-SANS = "IBM Plex Sans, -apple-system, Segoe UI, Helvetica, Arial, sans-serif"
-SERIF = "Source Serif 4, Georgia, serif"
+INK, NAVY, OR, RULE, MUTE, PAPER = "#0B1B2B", "#16324E", "#F15A24", "#E2E7ED", "#667381", "#F4F6F9"
+SANS = "Plus Jakarta Sans, -apple-system, Segoe UI, Helvetica, Arial, sans-serif"
+SERIF = SANS
 
 def svg(w, h, body, title):
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" role="img" aria-label="{title}">'

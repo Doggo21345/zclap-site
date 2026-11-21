@@ -52,9 +52,31 @@
     el.addEventListener("click", function () { track(el.getAttribute("data-track"), { page: location.pathname }); });
   });
 
+  // Where this visitor first came from (tracking tag on the link, or the referring site),
+  // kept for 90 days in this browser and sent with the form, so the Pipeline tab in the
+  // outreach sheet can tell LinkedIn, outreach, search and direct leads apart.
+  var firstTouch = (function () {
+    var KEY = "zclap_first_touch", now = Date.now();
+    var q = new URLSearchParams(location.search), saved = null;
+    try { saved = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (err) { saved = null; }
+    if (saved && now - saved.t > 90 * 864e5) saved = null;
+    var ref = document.referrer && document.referrer.indexOf(location.origin) !== 0 ? document.referrer : "";
+    if (!saved || q.get("utm_source")) {
+      saved = { t: now, utm_source: q.get("utm_source") || "", utm_medium: q.get("utm_medium") || "",
+        utm_campaign: q.get("utm_campaign") || "", referrer: ref.split("?")[0], landing_page: location.pathname };
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (err) { /* private mode: send this page's values */ }
+    }
+    return saved;
+  })();
+
   document.querySelectorAll("form[data-web3]").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      ["utm_source", "utm_medium", "utm_campaign", "referrer", "landing_page"].forEach(function (k) {
+        var input = form.querySelector('input[name="' + k + '"]');
+        if (!input) { input = document.createElement("input"); input.type = "hidden"; input.name = k; form.appendChild(input); }
+        input.value = firstTouch[k] || "";
+      });
       var b = form.querySelector("button[type=submit]");
       var label = b.innerHTML;
       b.disabled = true; b.textContent = "Sending…";
